@@ -55,6 +55,10 @@ class CatViewModel: ToggleFavorite {
     
     
     func loadData(catApi: CatApiService) {
+        guard displayCats.count == 0, currCatType != .favorite else {
+            subject.onNext(displayCats)
+            return
+        }
         catApi.loadData(catType: currCatType)
             .subscribe { [weak self] event in
                 guard let this = self else { return }
