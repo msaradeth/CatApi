@@ -24,7 +24,7 @@ class CatViewModel {
             if cats[currCatType.getIndex()].count > 0 {
                 subject.onNext(displayCats)
             }else {
-                loadData(catApi: CatApiService.newInstance())
+                loadData()
             }
         }
     }
@@ -54,7 +54,8 @@ class CatViewModel {
     }
     
     
-    func loadData(catApi: CatApiService) {
+    func loadData() {
+        let catApi = CatApiService.newInstance()
         guard displayCats.count == 0, currCatType != .favorite else {
             subject.onNext(displayCats)
             return

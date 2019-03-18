@@ -115,9 +115,13 @@ extension TestCatViewModel {
         let cats = [cat, cat2, cat3]
         viewModel.cats[CatType.all.getIndex()] = cats
         viewModel.toggleFavorite(index: 0)
+        print(cat.id)
+        print(cat2.id)
+        print(cat3.id)
         
         //Show not find the cat ID of the cat because it is toggle to false
         for aFavoriteCat in viewModel.displayCats {
+            print(aFavoriteCat.id, cat.id)
             XCTAssertEqual(aFavoriteCat.id == cat.id, false)
         }
     }
