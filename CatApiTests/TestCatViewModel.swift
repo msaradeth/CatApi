@@ -11,12 +11,13 @@ import XCTest
 
 
 class TestCatViewModel: XCTestCase {
-    var cat = Cat(breads: [], id: "1", url: "https://cdn2.thecatapi.com/images/4ni.jpg", isMyFavorite: false)
-    var cat2 = Cat(breads: [], id: "2", url: "https://cdn2.thecatapi.com/images/4ni.png", isMyFavorite: false)
-    var cat22 = Cat(breads: [], id: "22", url: "https://cdn2.thecatapi.com/images/4ni.png", isMyFavorite: false)
-    var cat3 = Cat(breads: [], id: "3", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false)
-    var cat33 = Cat(breads: [], id: "33", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false)
-    var cat333 = Cat(breads: [], id: "333", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false)
+
+    var cat = Cat(id: "1", url: "https://cdn2.thecatapi.com/images/4ni.jpg", isMyFavorite: false, image: nil)
+    var cat2 = Cat(id: "2", url: "https://cdn2.thecatapi.com/images/4ni.png", isMyFavorite: false, image: nil)
+    var cat22 = Cat(id: "22", url: "https://cdn2.thecatapi.com/images/4ni.png", isMyFavorite: false, image: nil)
+    var cat3 = Cat(id: "3", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false, image: nil)
+    var cat33 = Cat(id: "33", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false, image: nil)
+    var cat333 = Cat(id: "333", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false, image: nil)
     
     var viewModel:CatViewModel!
 }
