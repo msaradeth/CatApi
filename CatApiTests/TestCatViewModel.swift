@@ -44,14 +44,14 @@ extension TestCatViewModel {
 // MARK: - Test CatType.jpeg
 extension TestCatViewModel {
     func testIsLoadDataJpegCat() {
-        viewModel = CatViewModel(catType: .jpeg)
+        viewModel = CatViewModel(catType: .jpg)
         let cats = [cat, cat2, cat3]
         viewModel.cats[viewModel.currCatType.getIndex()] = cats
         XCTAssertEqual(cats == viewModel.displayCats, true)
     }
     
     func testIsNOTLoadDataJpegCat() {
-        viewModel = CatViewModel(catType: .jpeg)
+        viewModel = CatViewModel(catType: .jpg)
         let cats = [cat, cat2, cat3]
         let otherCats = [cat22, cat33]
         viewModel.cats[viewModel.currCatType.getIndex()] = cats

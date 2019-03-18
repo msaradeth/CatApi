@@ -8,10 +8,23 @@
 
 import UIKit
 
-struct Cat: Equatable {
+struct Category: Decodable {
+    var id: String
+    var name: String
+}
+
+struct CatDecode: Decodable {
+    var breads: [String]?
+    var id: String?
+    var url: String?
+    var categories: [Category]?
+}
+
+struct Cat: Decodable {
     var breads: [String]
     var id: String
     var url: String
-    var isMyFavorite: Bool        
+    var isMyFavorite: Bool
 }
+
 

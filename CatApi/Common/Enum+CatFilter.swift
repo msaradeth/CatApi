@@ -15,9 +15,19 @@ protocol GetValueProtocol {
     func getIndex() -> Int
 }
 
+
+
+enum ApiParams {
+    static let apiKey = "21a25674-3630-4395-8a64-9057ee4edd6d"
+    static let baseURLPath = "https://api.thecatapi.com/v1/images/search?"      
+    static let userId = "tldnpr"
+    static var authenticationToken: String?
+}
+
+
 enum CatType: GetValueProtocol {
     case all
-    case jpeg
+    case jpg
     case png
     case gif
     case favorite
@@ -26,7 +36,7 @@ enum CatType: GetValueProtocol {
         switch self {
         case .all:
             return 0
-        case .jpeg:
+        case .jpg:
             return 1
         case .png:
             return 2
@@ -41,7 +51,7 @@ enum CatType: GetValueProtocol {
         switch self {
         case .all:
             return "all"
-        case .jpeg:
+        case .jpg:
             return ".jpg"
         case .png:
             return ".png"
@@ -57,7 +67,7 @@ enum CatType: GetValueProtocol {
         case 0:
             return CatType.all
         case 1:
-            return CatType.jpeg
+            return CatType.jpg
         case 2:
             return CatType.png
         case 3:
