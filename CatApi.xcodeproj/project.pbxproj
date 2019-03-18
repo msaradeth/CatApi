@@ -13,7 +13,6 @@
 		0E0143F2223DCDF50045217A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E0143F0223DCDF50045217A /* LaunchScreen.storyboard */; };
 		0E01441C223DD0EC0045217A /* HttpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E01441B223DD0EC0045217A /* HttpHelper.swift */; };
 		0E01441E223DE1D80045217A /* CatApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E01441D223DE1D80045217A /* CatApiService.swift */; };
-		0E0768DB223F6F63009237CD /* TestCatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0768DA223F6F63009237CD /* TestCatVC.swift */; };
 		0E31CBAA223DED71001242AB /* CatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31CBA9223DED71001242AB /* CatVC.swift */; };
 		0E31CBAC223DF4D4001242AB /* CatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31CBAB223DF4D4001242AB /* CatViewModel.swift */; };
 		0E31CBAE223DF84A001242AB /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31CBAD223DF84A001242AB /* Cat.swift */; };
@@ -55,7 +54,6 @@
 		0E014409223DCDF50045217A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E01441B223DD0EC0045217A /* HttpHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpHelper.swift; sourceTree = "<group>"; };
 		0E01441D223DE1D80045217A /* CatApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatApiService.swift; sourceTree = "<group>"; };
-		0E0768DA223F6F63009237CD /* TestCatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCatVC.swift; sourceTree = "<group>"; };
 		0E31CBA9223DED71001242AB /* CatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatVC.swift; sourceTree = "<group>"; };
 		0E31CBAB223DF4D4001242AB /* CatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewModel.swift; sourceTree = "<group>"; };
 		0E31CBAD223DF84A001242AB /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 		0E014406223DCDF50045217A /* CatApiUITests */ = {
 			isa = PBXGroup;
 			children = (
-				0E0768DA223F6F63009237CD /* TestCatVC.swift */,
 				0E014409223DCDF50045217A /* Info.plist */,
 			);
 			path = CatApiUITests;
@@ -444,7 +441,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E0768DB223F6F63009237CD /* TestCatVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
