@@ -46,18 +46,6 @@ class CatViewModel: ToggleFavorite {
         }
     }
     
-    func toggleFavorite(index: Int) {
-        switch currCatType {
-        case .favorite:
-            let cat = displayCats[index]
-            toggleFavoriteCatTypeWithID(cat: cat)
-        default:
-            toggleCatTypeWithIndex(aCatTye: currCatType, srcIndex: index)
-        }
-        subject.onNext(displayCats)
-    }
-    
-
     
     func loadData() {
         let catApi = CatApiService()
@@ -73,6 +61,24 @@ class CatViewModel: ToggleFavorite {
                 }
             }
             .disposed(by: disposeBag)
+    }
+}
+
+
+
+
+// MARK: - Toggle isMyFavorite
+extension CatViewModel {
+    
+    func toggleFavorite(index: Int) {
+        switch currCatType {
+        case .favorite:
+            let cat = displayCats[index]
+            toggleFavoriteCatTypeWithID(cat: cat)
+        default:
+            toggleCatTypeWithIndex(aCatTye: currCatType, srcIndex: index)
+        }
+        subject.onNext(displayCats)
     }
     
     
