@@ -52,6 +52,7 @@ class CatViewModel: ToggleFavorite {
         }else {
             cats[currCatType.getIndex()][index].isMyFavorite = true
         }
+        subject.onNext(displayCats)
     }
     
     func loadData() {

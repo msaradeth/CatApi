@@ -55,6 +55,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="catImageView" destination="3b0-RW-mMd" id="KwB-Ca-IDc"/>
+                <outlet property="favoriteContainerView" destination="evW-Es-vzc" id="W2d-7M-ia5"/>
                 <outlet property="favoriteImageView" destination="kRo-6F-g6E" id="Yev-dK-FSx"/>
             </connections>
             <point key="canvasLocation" x="222.40000000000001" y="220.3898050974513"/>

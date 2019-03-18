@@ -16,7 +16,7 @@ class CatVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedCntrl: UISegmentedControl!
     
-    let disposeBag = DisposeBag()
+    fileprivate let disposeBag = DisposeBag()
     var viewModel: CatViewModel!
     
     // Inject need objects for this view controller

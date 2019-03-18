@@ -43,20 +43,8 @@ class CatApiService: NSObject {
             default:
                 break
             }
-
             single(.success(cats))
             
-            
-            //let response = await axios.get('https://api.thecatapi.com/v1/images/search', { params: { limit:1, size:"full" } } ) // Ask for 1 Image, at full resolution
-            
-//            HttpHelper.get(API.baseURLPath, success: { (response) in
-//                print(response)
-//                let cat = Cat(breads: [], id: "1", url: "https://cdn2.thecatapi.com/images/4ni.jpg")
-//                let cats: [Cat] = [cat, cat, cat, cat, cat]
-//                single(.success(cats))
-//            }, failure: { (myError) in
-//                single(.error(myError))
-//            })
             
             return Disposables.create()
         }
@@ -96,7 +84,7 @@ class CatApiService: NSObject {
     
     
     deinit {
-        print("FaqService func deinit() debug")
+        print("CatApiService func deinit() debug")
     }
 
 }
