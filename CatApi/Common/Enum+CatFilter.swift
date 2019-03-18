@@ -15,6 +15,9 @@ protocol GetValueProtocol {
     func getIndex() -> Int
 }
 
+enum APIError: Error {
+    case parseJSONError
+}
 
 
 enum ApiParams {
@@ -31,6 +34,7 @@ enum CatType: GetValueProtocol {
     case png
     case gif
     case favorite
+    case unknown
     
     func getIndex() -> Int {
         switch self {
@@ -44,6 +48,8 @@ enum CatType: GetValueProtocol {
             return 3
         case .favorite:
             return 4
+        case .unknown:
+            return 5
         }
     }
     
@@ -59,6 +65,8 @@ enum CatType: GetValueProtocol {
             return ".gif"
         case .favorite:
             return "favorite"
+        case .unknown:
+            return "unknown"
         }
     }
     
@@ -76,6 +84,19 @@ enum CatType: GetValueProtocol {
             return CatType.favorite
         default:
             return CatType.all
+        }
+    }
+    
+    static func getTypeWithFileExt(fileExt: String) -> CatType {
+        switch fileExt {
+        case CatType.jpg.getFilterValue():
+            return CatType.jpg
+        case CatType.png.getFilterValue():
+            return CatType.png
+        case CatType.gif.getFilterValue():
+            return CatType.gif
+        default:
+            return CatType.unknown
         }
     }
 }

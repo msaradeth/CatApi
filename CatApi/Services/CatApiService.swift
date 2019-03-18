@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import SwiftyJSON
 
 
 class CatApiService: NSObject {
@@ -35,14 +36,32 @@ class CatApiService: NSObject {
             }
             HttpHelper.request(baseUrl, method: .get, params: params, success: { (response) in
                 print(response)
-//                let catArr = response as? Array
                 var cats: [Cat] = []
-                var catDecode: [CatDecode] = []
-                do {
-                    catDecode = try JSONDecoder().decode(Array<CatDecode>.self, from: response.data!)
-                } catch let error {
-                    print(error.localizedDescription)
+                let resJson = JSON(response.result.value!)
+                print(resJson)
+                
+//                guard let jsonArr = response.result.value as? [String:Any] else {
+//                    single(.error(APIError.parseJSONError))
+//                    return
+//                }
+                for object in resJson {
+                    let id = object.1["id"]
+                    let urlString = object.1["url"]
+                    if urlString.count > 3 {
+                        let fileExt = urlString.suffix(3)
+                        print(fileExt)
+//                        let catType = CatType.getTypeWithFileExt(fileExt: fileExt)
+                        
+                    }
                 }
+                
+                
+
+//                do {
+//                    catDecode = try JSONDecoder().decode(Array<CatDecode>.self, from: response.data!)
+//                } catch let error {
+//                    print(error.localizedDescription)
+//                }
                 single(.success(cats))
                 
             }, failure: { (myError) in
