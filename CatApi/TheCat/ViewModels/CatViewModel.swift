@@ -31,7 +31,14 @@ class CatViewModel: ToggleFavorite {
     var displayCats: [Cat] {
         switch currCatType {
         case .favorite:
-            return cats.flatMap({ $0 }).filter({ $0.isMyFavorite == true } )
+            let myFavoriteCats = Array(cats.flatMap({ $0 }).filter({ $0.isMyFavorite == true } ))
+            //Remove possible duplicate
+            var catDict: [String:Cat] = [:]
+            for cat in myFavoriteCats {
+                catDict[cat.id] = cat
+            }
+            return Array(catDict.values)
+            
         default:
             return cats[currCatType.getIndex()]
         }
