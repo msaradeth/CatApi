@@ -31,7 +31,7 @@ class CatViewModel: ToggleFavorite {
     fileprivate var displayCats: [Cat] {
         switch currCatType {
         case .favorite:
-            return cats[currCatType.getIndex()].filter({ $0.isMyFavorite == true } )
+            return cats.flatMap({ $0 }).filter({ $0.isMyFavorite == true } )
         default:
             return cats[currCatType.getIndex()]
         }
@@ -47,13 +47,17 @@ class CatViewModel: ToggleFavorite {
     }
     
     func toggleFavorite(index: Int) {
-        if cats[currCatType.getIndex()][index].isMyFavorite {
-            cats[currCatType.getIndex()][index].isMyFavorite = false
-        }else {
-            cats[currCatType.getIndex()][index].isMyFavorite = true
+        switch currCatType {
+        case .favorite:
+            let cat = displayCats[index]
+            toggleFavoriteCatTypeWithID(cat: cat)
+        default:
+            toggleCatTypeWithIndex(aCatTye: currCatType, srcIndex: index)
         }
         subject.onNext(displayCats)
     }
+    
+
     
     func loadData() {
         let catApi = CatApiService()
@@ -69,6 +73,33 @@ class CatViewModel: ToggleFavorite {
                 }
             }
             .disposed(by: disposeBag)
+    }
+    
+    
+    // Toggle current cat type with index
+    private func toggleCatTypeWithIndex(aCatTye: CatType, srcIndex: Int) {
+        if cats[aCatTye.getIndex()][srcIndex].isMyFavorite {
+            cats[aCatTye.getIndex()][srcIndex].isMyFavorite = false
+        }else {
+            cats[aCatTye.getIndex()][srcIndex].isMyFavorite = true
+        }
+    }
+    
+    // Toggle source cat type that has matching ID and set to NOT isMyFavorite
+    private func toggleFavoriteCatTypeWithID(cat: Cat) {
+        // Interate cats array except favorite catType
+        for segmentIndex in 0..<cats.count {
+            // Skip favorite section
+            let aCatTye = CatType.getType(segmentIndex: segmentIndex)
+            if aCatTye == CatType.favorite { continue }
+            
+            // Search for aCatType that contains given ID, if found set to NOT isMyFavorite
+            for index in 0..<cats[segmentIndex].count {
+                if cat.id == cats[segmentIndex][index].id {
+                    cats[aCatTye.getIndex()][index].isMyFavorite = !cat.isMyFavorite
+                }
+            }
+        }
     }
     
 }
