@@ -34,7 +34,6 @@ class CatVC: UIViewController {
     }
     
     @IBAction func segCntrlAction(_ sender: UISegmentedControl) {
-        print(sender.selectedSegmentIndex)
         let catType = CatType.getType(segmentIndex: sender.selectedSegmentIndex)
         viewModel.currCatType = catType
     }
