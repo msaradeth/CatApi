@@ -82,7 +82,6 @@ extension CatViewModel: CatViewModelDelegate {
     
     func updateImage(sectionIndex: Int, index: Int, image: UIImage) {
         guard sectionIndex != CatType.favorite.getIndex(), index < cats[sectionIndex].count else { return }
-        print(sectionIndex, index, cats[currCatType.getIndex()].count)
         
         cats[sectionIndex][index].image = image
         let imageCount = cats[sectionIndex].filter( { $0.image != nil } ).count
