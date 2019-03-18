@@ -73,7 +73,7 @@ class CatApiService: NSObject {
 // MARK: - Mock data for testing before API's ready
 extension CatApiService {
     
-        public func loadDataMockData(catType: CatType) -> Single<[Cat]> {
+        public func loadTestMockData(catType: CatType) -> Single<[Cat]> {
             return Single<[Cat]>.create { single in
                 let cat = Cat(id: "1", url: "https://cdn2.thecatapi.com/images/4ni.jpg", isMyFavorite: false, image: nil)
                 let cat2 = Cat(id: "2", url: "https://cdn2.thecatapi.com/images/4ni.png", isMyFavorite: false, image: nil)
