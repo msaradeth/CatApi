@@ -17,21 +17,35 @@ class CatTableViewCell: UITableViewCell {
     @IBOutlet weak var catImageView: UIImageView!
     @IBOutlet weak var favoriteContainerView: UIView!
     @IBOutlet weak var favoriteImageView: UIImageView!
-    fileprivate var delegate: ToggleFavorite?
+    fileprivate var delegate: CatViewModelDelegate?
+    fileprivate var sectionIndex: Int!
     fileprivate var index: Int!
     
-    func configure(item: Cat, index: Int, toggleFavorite: ToggleFavorite) {
+    func configure(item: Cat, sectionIndex: Int, index: Int, catViewModelDelegate: CatViewModelDelegate) {
+        self.sectionIndex = sectionIndex
         self.index = index
-        self.delegate = toggleFavorite
+        self.delegate = catViewModelDelegate
         favoriteImageView.image = item.isMyFavorite == true ? myFavoriteImage : notMyFavoriteImage
         addTapGestureRecognizer(view: favoriteContainerView)    // add TapGestureRecognizer
         
         //Update cat image
-        guard let imageURL = URL(string: item.url),
-            let imageData = try? Data(contentsOf: imageURL),
-            let catImage =  UIImage(data: imageData)
-        else { return }
-        catImageView.image = catImage                        
+        if let catImage = item.image {
+            catImageView.image = catImage
+        }else {
+            DispatchQueue.global().async {
+                guard let imageURL = URL(string: item.url),
+                    let imageData = try? Data(contentsOf: imageURL),
+                    let catImage =  UIImage(data: imageData)
+                    else { return }
+                
+                DispatchQueue.main.async {
+                    self.catImageView.image = catImage
+                    self.delegate?.updateImage(sectionIndex: sectionIndex, index: index, image: catImage)
+                }
+
+            }
+        }
+        
     }
     
     @IBAction func tabFavorite(_ sender: UITapGestureRecognizer) {

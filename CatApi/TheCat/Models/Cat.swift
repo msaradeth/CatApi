@@ -13,6 +13,7 @@ struct Cat: Codable {
     var id: String
     var url: String
     var isMyFavorite = false
+    var image: UIImage?
     
     enum CodingKeys: String, CodingKey {
         case id

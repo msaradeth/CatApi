@@ -8,14 +8,14 @@
 
 import Foundation
 import RxSwift
-//import RealmSwift
 
 
-protocol ToggleFavorite {
+protocol CatViewModelDelegate {
     func toggleFavorite(index: Int)
+    func updateImage(sectionIndex: Int, index: Int, image: UIImage)
 }
 
-class CatViewModel: ToggleFavorite {
+class CatViewModel {
     fileprivate let disposeBag = DisposeBag()
     var cats: [[Cat]]
     var subject: BehaviorSubject<[Cat]>
@@ -77,8 +77,20 @@ class CatViewModel: ToggleFavorite {
 
 
 
-// MARK: - Toggle isMyFavorite
-extension CatViewModel {
+// MARK: - CatViewModelDelegate
+extension CatViewModel: CatViewModelDelegate {
+    
+    func updateImage(sectionIndex: Int, index: Int, image: UIImage) {
+        guard sectionIndex != CatType.favorite.getIndex(), index < cats[sectionIndex].count else { return }
+        print(sectionIndex, index, cats[currCatType.getIndex()].count)
+        
+        cats[sectionIndex][index].image = image
+        let imageCount = cats[sectionIndex].filter( { $0.image != nil } ).count
+        if imageCount == cats[sectionIndex].count {
+            subject.onNext(displayCats)
+        }        
+    }
+    
     
     func toggleFavorite(index: Int) {
         switch currCatType {

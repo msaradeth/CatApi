@@ -47,7 +47,8 @@ class CatApiService: NSObject {
     private func getParams(catType: CatType) -> [String:String] {
         //Setup params
         var params: [String: String] = [:]
-        params["limit"] = "20"
+        params["limit"] = "10"
+        params["limit"] = "10"
         switch catType {
         case .gif:
             fallthrough
