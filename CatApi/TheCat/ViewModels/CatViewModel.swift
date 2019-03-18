@@ -16,11 +16,19 @@ protocol ToggleFavorite {
 }
 
 class CatViewModel: ToggleFavorite {
-    let disposeBag = DisposeBag()
+    fileprivate let disposeBag = DisposeBag()
+    fileprivate var cats: [[Cat]]
     var subject: BehaviorSubject<[Cat]>
-    var cats: [[Cat]]
-    var currCatType: CatType
-    var displayCats: [Cat] {
+    var currCatType: CatType {
+        didSet {
+            if cats[currCatType.getIndex()].count > 0 {
+                subject.onNext(displayCats)
+            }else {
+                loadData()
+            }
+        }
+    }
+    fileprivate var displayCats: [Cat] {
         switch currCatType {
         case .favorite:
             return cats[currCatType.getIndex()].filter({ $0.isMyFavorite == true } )
@@ -32,20 +40,9 @@ class CatViewModel: ToggleFavorite {
     init() {
         currCatType = .all
         subject = BehaviorSubject<[Cat]>(value: [])
-        
-        //Init cats with empty array
         cats = []
         for _ in 0..<5 {
-            cats.append([Cat]())
-        }
-    }
-    
-    func setCurrentCatType(catType: CatType) {
-        currCatType = catType
-        if cats[currCatType.getIndex()].count > 0 {
-            subject.onNext(displayCats)
-        }else {
-            loadData()
+            cats.append([Cat]())    //Init with empty arrays
         }
     }
     

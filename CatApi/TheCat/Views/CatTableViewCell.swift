@@ -20,7 +20,6 @@ class CatTableViewCell: UITableViewCell {
     var index: Int!
     
     func configure(item: Cat, index: Int, toggleFavorite: ToggleFavorite) {
-        print(item.isMyFavorite)
         self.index = index
         self.delegate = toggleFavorite
         
@@ -31,18 +30,5 @@ class CatTableViewCell: UITableViewCell {
     
     @IBAction func tabFavorite(_ sender: UITapGestureRecognizer) {
         delegate?.toggleFavorite(index: index)
-    }
-    
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-    
+    }        
 }

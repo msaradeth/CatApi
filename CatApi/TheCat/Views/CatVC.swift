@@ -31,13 +31,12 @@ class CatVC: UIViewController {
         super.viewDidLoad()
         setupRx()
         viewModel.loadData()
-
     }
     
     @IBAction func segCntrlAction(_ sender: UISegmentedControl) {
         print(sender.selectedSegmentIndex)
         let catType = CatType.getType(segmentIndex: sender.selectedSegmentIndex)
-        viewModel.setCurrentCatType(catType: catType)
+        viewModel.currCatType = catType
     }
     
     func setupRx() {
