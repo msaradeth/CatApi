@@ -20,11 +20,12 @@ enum APIError: Error {
 }
 
 
-enum ApiParams {
+enum ApiConstant {
     static let apiKey = "21a25674-3630-4395-8a64-9057ee4edd6d"
     static let baseURLPath = "https://api.thecatapi.com/v1/images/search?"      
     static let userId = "tldnpr"
     static var authenticationToken: String?
+    static let headers = ["x-api-key":ApiConstant.apiKey]      
 }
 
 

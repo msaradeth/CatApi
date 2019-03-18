@@ -9,11 +9,15 @@
 import UIKit
 
 
-struct Cat {
+struct Cat: Codable {
     var id: String
     var url: String
-    var catType: CatType
-    var isMyFavorite: Bool
+    var isMyFavorite = false
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case url
+    }
 }
 
 

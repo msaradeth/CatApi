@@ -23,14 +23,15 @@ class CatTableViewCell: UITableViewCell {
     func configure(item: Cat, index: Int, toggleFavorite: ToggleFavorite) {
         self.index = index
         self.delegate = toggleFavorite
-        
-        //Update values
-        catImageView.image = item.isMyFavorite == true ? myFavoriteImage : notMyFavoriteImage
         favoriteImageView.image = item.isMyFavorite == true ? myFavoriteImage : notMyFavoriteImage
+        addTapGestureRecognizer(view: favoriteContainerView)    // add TapGestureRecognizer
         
-        // add TapGestureRecognizer
-        addTapGestureRecognizer(view: favoriteContainerView)
-        
+        //Update cat image
+        guard let imageURL = URL(string: item.url),
+            let imageData = try? Data(contentsOf: imageURL),
+            let catImage =  UIImage(data: imageData)
+        else { return }
+        catImageView.image = catImage                        
     }
     
     @IBAction func tabFavorite(_ sender: UITapGestureRecognizer) {

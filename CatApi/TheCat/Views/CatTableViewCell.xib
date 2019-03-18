@@ -33,7 +33,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.87539077178724001" green="0.90762629533678751" blue="0.0084472202830516568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="kRo-6F-g6E" firstAttribute="centerY" secondItem="evW-Es-vzc" secondAttribute="centerY" id="Qwa-Uj-8rm"/>
@@ -62,6 +62,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="NotMyFavorite" width="96" height="96"/>
+        <image name="NotMyFavorite" width="72" height="72"/>
     </resources>
 </document>

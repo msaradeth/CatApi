@@ -14,9 +14,8 @@ import RxSwift
 
 final class HttpHelper: NSObject {
 
-    class func request(_ url: URLConvertible, method: HTTPMethod, params: Parameters, success: @escaping (DataResponse<Any>) -> Void, failure:@escaping (Error) -> Void) {
-        let headers = ["x-api-key":ApiParams.apiKey]        
-        Alamofire.request(url, method: method, parameters: params, headers: headers).responseJSON { response in
+    class func request(_ url: URLConvertible, method: HTTPMethod, params: Parameters?, success: @escaping (DataResponse<Any>) -> Void, failure:@escaping (Error) -> Void) {
+        Alamofire.request(url, method: method, parameters: params, headers: ApiConstant.headers).responseJSON { response in
             switch response.result {
             case .success:
                 success(response)
