@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Cat {
+struct Cat: Equatable {
     var breads: [String]
     var id: String
     var url: String

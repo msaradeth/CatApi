@@ -11,10 +11,9 @@
 		0E0143ED223DCDF30045217A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E0143EB223DCDF30045217A /* Main.storyboard */; };
 		0E0143EF223DCDF50045217A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E0143EE223DCDF50045217A /* Assets.xcassets */; };
 		0E0143F2223DCDF50045217A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E0143F0223DCDF50045217A /* LaunchScreen.storyboard */; };
-		0E0143FD223DCDF50045217A /* CatApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0143FC223DCDF50045217A /* CatApiTests.swift */; };
-		0E014408223DCDF50045217A /* CatApiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E014407223DCDF50045217A /* CatApiUITests.swift */; };
 		0E01441C223DD0EC0045217A /* HttpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E01441B223DD0EC0045217A /* HttpHelper.swift */; };
 		0E01441E223DE1D80045217A /* CatApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E01441D223DE1D80045217A /* CatApiService.swift */; };
+		0E0768DB223F6F63009237CD /* TestCatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0768DA223F6F63009237CD /* TestCatVC.swift */; };
 		0E31CBAA223DED71001242AB /* CatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31CBA9223DED71001242AB /* CatVC.swift */; };
 		0E31CBAC223DF4D4001242AB /* CatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31CBAB223DF4D4001242AB /* CatViewModel.swift */; };
 		0E31CBAE223DF84A001242AB /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E31CBAD223DF84A001242AB /* Cat.swift */; };
@@ -51,13 +50,12 @@
 		0E0143F1223DCDF50045217A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E0143F3223DCDF50045217A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E0143F8223DCDF50045217A /* CatApiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatApiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0E0143FC223DCDF50045217A /* CatApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatApiTests.swift; sourceTree = "<group>"; };
 		0E0143FE223DCDF50045217A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E014403223DCDF50045217A /* CatApiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatApiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0E014407223DCDF50045217A /* CatApiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatApiUITests.swift; sourceTree = "<group>"; };
 		0E014409223DCDF50045217A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E01441B223DD0EC0045217A /* HttpHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpHelper.swift; sourceTree = "<group>"; };
 		0E01441D223DE1D80045217A /* CatApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatApiService.swift; sourceTree = "<group>"; };
+		0E0768DA223F6F63009237CD /* TestCatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCatVC.swift; sourceTree = "<group>"; };
 		0E31CBA9223DED71001242AB /* CatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatVC.swift; sourceTree = "<group>"; };
 		0E31CBAB223DF4D4001242AB /* CatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewModel.swift; sourceTree = "<group>"; };
 		0E31CBAD223DF84A001242AB /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				0EF9699D223EAD9300544BA6 /* TestCatViewModel.swift */,
-				0E0143FC223DCDF50045217A /* CatApiTests.swift */,
 				0E0143FE223DCDF50045217A /* Info.plist */,
 			);
 			path = CatApiTests;
@@ -145,7 +142,7 @@
 		0E014406223DCDF50045217A /* CatApiUITests */ = {
 			isa = PBXGroup;
 			children = (
-				0E014407223DCDF50045217A /* CatApiUITests.swift */,
+				0E0768DA223F6F63009237CD /* TestCatVC.swift */,
 				0E014409223DCDF50045217A /* Info.plist */,
 			);
 			path = CatApiUITests;
@@ -373,14 +370,10 @@
 				"${PODS_ROOT}/Target Support Files/Pods-CatApi/Pods-CatApi-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -388,14 +381,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -447,7 +436,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E0143FD223DCDF50045217A /* CatApiTests.swift in Sources */,
 				0EF9699E223EAD9300544BA6 /* TestCatViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,7 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E014408223DCDF50045217A /* CatApiUITests.swift in Sources */,
+				0E0768DB223F6F63009237CD /* TestCatVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 import Foundation
 import RxSwift
-import RealmSwift
+//import RealmSwift
 
 
 protocol ToggleFavorite {
@@ -17,18 +17,18 @@ protocol ToggleFavorite {
 
 class CatViewModel: ToggleFavorite {
     fileprivate let disposeBag = DisposeBag()
-    fileprivate var cats: [[Cat]]
+    var cats: [[Cat]]
     var subject: BehaviorSubject<[Cat]>
     var currCatType: CatType {
         didSet {
             if cats[currCatType.getIndex()].count > 0 {
                 subject.onNext(displayCats)
             }else {
-                loadData()
+                loadData(catApi: CatApiService.newInstance())
             }
         }
     }
-    fileprivate var displayCats: [Cat] {
+    var displayCats: [Cat] {
         switch currCatType {
         case .favorite:
             return cats.flatMap({ $0 }).filter({ $0.isMyFavorite == true } )
@@ -37,8 +37,8 @@ class CatViewModel: ToggleFavorite {
         }
     }
     
-    init() {
-        currCatType = .all
+    init(catType: CatType) {
+        currCatType = catType
         subject = BehaviorSubject<[Cat]>(value: [])
         cats = []
         for _ in 0..<5 {
@@ -47,8 +47,7 @@ class CatViewModel: ToggleFavorite {
     }
     
     
-    func loadData() {
-        let catApi = CatApiService()
+    func loadData(catApi: CatApiService) {
         catApi.loadData(catType: currCatType)
             .subscribe { [weak self] event in
                 guard let this = self else { return }

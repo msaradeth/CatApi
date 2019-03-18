@@ -30,7 +30,7 @@ class CatVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRx()
-        viewModel.loadData()
+        viewModel.loadData(catApi: CatApiService.newInstance())
     }
     
     @IBAction func segCntrlAction(_ sender: UISegmentedControl) {

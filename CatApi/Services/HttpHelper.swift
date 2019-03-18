@@ -9,9 +9,9 @@
 import Foundation
 import Alamofire
 import RxSwift
-import SwiftyJSON
 
-// 1
+
+
 enum API {
     static let apiKey = "21a25674-3630-4395-8a64-9057ee4edd6d"
     static let baseURLPath = "https://api.thecatapi.com/v1/images/search?"

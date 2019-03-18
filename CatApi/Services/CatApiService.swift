@@ -13,41 +13,8 @@ import RxSwift
 class CatApiService: NSObject {
     let disposeBag = DisposeBag()
     
-    public func loadData(catType: CatType) -> Single<[Cat]> {
-        return Single<[Cat]>.create { single in
-            let cat = Cat(breads: [], id: "1", url: "https://cdn2.thecatapi.com/images/4ni.jpg", isMyFavorite: false)
-            let cat2 = Cat(breads: [], id: "2", url: "https://cdn2.thecatapi.com/images/4ni.png", isMyFavorite: false)
-            let cat22 = Cat(breads: [], id: "22", url: "https://cdn2.thecatapi.com/images/4ni.png", isMyFavorite: false)
-            let cat3 = Cat(breads: [], id: "3", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false)
-            let cat33 = Cat(breads: [], id: "33", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false)
-            let cat333 = Cat(breads: [], id: "333", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false)
-
-            var cats: [Cat] = []
-            switch catType {
-            case .all:
-                cats.append(cat)
-                cats.append(cat2)
-                cats.append(cat22)
-                cats.append(cat3)
-                cats.append(cat33)
-                cats.append(cat333)
-            case .jpeg:
-                cats.append(cat)
-            case .png:
-                cats.append(cat2)
-                cats.append(cat22)
-            case .gif:
-                cats.append(cat3)
-                cats.append(cat33)
-                cats.append(cat333)
-            default:
-                break
-            }
-            single(.success(cats))
-            
-            
-            return Disposables.create()
-        }
+    class func newInstance() -> CatApiService {
+        return CatApiService()
     }
     
 //    init() {
@@ -81,6 +48,47 @@ class CatApiService: NSObject {
 //        return Disposables.create()
 //
 //    }
+    
+    
+    
+    
+    // MARK: - Mock data for testing
+    public func loadData(catType: CatType) -> Single<[Cat]> {
+        return Single<[Cat]>.create { single in
+            let cat = Cat(breads: [], id: "1", url: "https://cdn2.thecatapi.com/images/4ni.jpg", isMyFavorite: false)
+            let cat2 = Cat(breads: [], id: "2", url: "https://cdn2.thecatapi.com/images/4ni.png", isMyFavorite: false)
+            let cat22 = Cat(breads: [], id: "22", url: "https://cdn2.thecatapi.com/images/4ni.png", isMyFavorite: false)
+            let cat3 = Cat(breads: [], id: "3", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false)
+            let cat33 = Cat(breads: [], id: "33", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false)
+            let cat333 = Cat(breads: [], id: "333", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false)
+            
+            var cats: [Cat] = []
+            switch catType {
+            case .all:
+                cats.append(cat)
+                cats.append(cat2)
+                cats.append(cat22)
+                cats.append(cat3)
+                cats.append(cat33)
+                cats.append(cat333)
+            case .jpeg:
+                cats.append(cat)
+            case .png:
+                cats.append(cat2)
+                cats.append(cat22)
+            case .gif:
+                cats.append(cat3)
+                cats.append(cat33)
+                cats.append(cat333)
+            default:
+                break
+            }
+            single(.success(cats))
+            
+            
+            return Disposables.create()
+        }
+    }
     
     
     deinit {
