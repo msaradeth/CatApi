@@ -9,7 +9,7 @@
 import UIKit
 
 
-struct Cat: Codable, Equatable {
+struct Cat: Codable, Equatable, Hashable {
     var id: String
     var url: String
     var isMyFavorite = false

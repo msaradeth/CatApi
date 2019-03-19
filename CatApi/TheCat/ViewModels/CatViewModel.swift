@@ -31,13 +31,17 @@ class CatViewModel {
     var displayCats: [Cat] {
         switch currCatType {
         case .favorite:
-            let myFavoriteCats = Array(cats.flatMap({ $0 }).filter({ $0.isMyFavorite == true } ))
-            //Remove possible duplicate
-            var catDict: [String:Cat] = [:]
-            for cat in myFavoriteCats {
-                catDict[cat.id] = cat
-            }
-            return Array(catDict.values)
+            //Remove duplicates with Set
+            let myFavoriteCats = Array(Set(cats.flatMap({ $0 }).filter({ $0.isMyFavorite == true } )))
+            return myFavoriteCats
+            
+//            let myFavoriteCats = Array(cats.flatMap({ $0 }).filter({ $0.isMyFavorite == true } ))
+//            //Remove possible duplicate
+//            var catDict: [String:Cat] = [:]
+//            for cat in myFavoriteCats {
+//                catDict[cat.id] = cat
+//            }
+//            return Array(catDict.values)
             
         default:
             return cats[currCatType.getIndex()]
