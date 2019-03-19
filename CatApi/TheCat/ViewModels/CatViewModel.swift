@@ -59,11 +59,11 @@ class CatViewModel {
     
     
     func loadData() {
-        let catApi = CatApiService.newInstance()
         guard displayCats.count == 0, currCatType != .favorite else {
             subject.onNext(displayCats)
             return
         }
+        let catApi = CatApiService.newInstance()
         catApi.loadData(catType: currCatType)
             .subscribe { [weak self] event in
                 guard let this = self else { return }
