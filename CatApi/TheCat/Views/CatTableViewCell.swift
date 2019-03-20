@@ -58,8 +58,7 @@ class CatTableViewCell: UITableViewCell {
     }
     
     func getFavoriteImage(id: String) -> UIImage? {
-        guard let delegate = self.delegate else { return nil }        
-        let isMyFavorite = delegate.isMyFavorite(id: id)
+        guard let isMyFavorite = delegate?.isMyFavorite(id: id) else { return nil }
         return isMyFavorite ? myFavoriteImage : notMyFavoriteImage
     }
     
