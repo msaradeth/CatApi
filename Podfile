@@ -9,7 +9,7 @@ target 'CatApi' do
   pod 'RxSwift', '~> 4.4.0'
   pod 'RxCocoa', '~> 4.4.0'
   pod 'RxDataSources', '~> 3.1.0'
-#  pod 'RealmSwift'
+  pod 'RealmSwift'
 
 
   target 'CatApiTests' do
@@ -19,6 +19,7 @@ target 'CatApi' do
     pod 'RxSwift', '~> 4.4.0'
     pod 'RxCocoa', '~> 4.4.0'
     pod 'RxDataSources', '~> 3.1.0'
+    pod 'RealmSwift'
   end
 
 end

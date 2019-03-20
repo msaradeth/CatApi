@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         //Setup App Entry Point
-        let viewModel = CatViewModel(catType: .all, cache: Cache.shared)
+        let dataSource = DataSource()
+        let viewModel = CatViewModel(catType: .all, dataSource: dataSource)
         let vc = CatVC.createWith(title: "The Cat API", viewModel: viewModel)
         let nav = UINavigationController(rootViewController: vc)
         nav.navigationBar.prefersLargeTitles = true

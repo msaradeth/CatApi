@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4DBFB047E93D3DEBB987CBF2AFDC009A"
+               BlueprintIdentifier = "F3C8EFD4A8ED40090D2F911E651A0BF9"
                BuildableName = "Pods_CatApi_CatApiTests.framework"
                BlueprintName = "Pods-CatApi-CatApiTests"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4DBFB047E93D3DEBB987CBF2AFDC009A"
+            BlueprintIdentifier = "F3C8EFD4A8ED40090D2F911E651A0BF9"
             BuildableName = "Pods_CatApi_CatApiTests.framework"
             BlueprintName = "Pods-CatApi-CatApiTests"
             ReferencedContainer = "container:Pods.xcodeproj">
