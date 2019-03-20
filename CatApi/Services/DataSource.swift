@@ -7,20 +7,12 @@
 //
 
 import Foundation
+import RealmSwift
+
 
 class DataSource: NSObject {
     var cache: Cache {
         return Cache.shared
     }
-    
-    
-    // MARK: set and get favorite cats
-    public func isMyFavorite(id: String) -> Bool {
-//        return (isFavorite[id] ?? false)
-        return true
-    }
-    public func setMyFavorite(id: String, isFavorite: Bool) {
-//        self.isFavorite[id] = isFavorite
-    }
-     
+         
 }

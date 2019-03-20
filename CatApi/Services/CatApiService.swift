@@ -69,7 +69,7 @@ class CatApiService: NSObject {
 }
 
 
-// MARK: - Mock data for testing before API's ready
+// MARK: - Mock data for testing before API's ready - Test UI and duplicate cats
 extension CatApiService {
     
         public func loadTestMockData(catType: CatType) -> Single<[Cat]> {
