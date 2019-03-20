@@ -17,16 +17,11 @@ class CatTableViewCell: UITableViewCell {
     @IBOutlet weak var catImageView: UIImageView!
     @IBOutlet weak var favoriteContainerView: UIView!
     @IBOutlet weak var favoriteImageView: UIImageView!
-    fileprivate var sectionIndex: Int!
-    fileprivate var index: Int!
     fileprivate var item: Cat!
     fileprivate var delegate: CatViewModelDelegate?
-    fileprivate var cache: Cache!
     
-    func configure(item: Cat, sectionIndex: Int, index: Int, delegate: CatViewModelDelegate) {
+    func configure(item: Cat, delegate: CatViewModelDelegate) {
         self.item = item
-        self.sectionIndex = sectionIndex
-        self.index = index
         self.delegate = delegate
         
         //update favorite/NotFavorite image
@@ -48,8 +43,7 @@ class CatTableViewCell: UITableViewCell {
                     self.catImageView.image = catImage
                 }
             }
-        }
-        
+        }        
     }
     
     @IBAction func tabFavorite(_ sender: UITapGestureRecognizer) {

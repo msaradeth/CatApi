@@ -13,12 +13,14 @@ class DataSource: NSObject {
         return Cache.shared
     }
     
-    func get()  {
-        
-    }
     
-    func save() {
-        
+    // MARK: set and get favorite cats
+    func isMyFavorite(id: String) -> Bool {
+//        return (isFavorite[id] ?? false)
+        return true
+    }
+    func setMyFavorite(id: String, isFavorite: Bool) {
+//        self.isFavorite[id] = isFavorite
     }
      
 }
