@@ -11,8 +11,10 @@ import RxSwift
 
 
 protocol CatViewModelDelegate {
-    func toggleFavorite(index: Int)
-    func updateImage(sectionIndex: Int, index: Int, image: UIImage)
+    func toggleFavorite(id: String)
+    func isMyFavorite(id: String) -> Bool
+    func getCatImage(id: String) -> UIImage?
+    func setCatImage(id: String, image: UIImage)
 }
 
 class CatViewModel {
@@ -32,7 +34,7 @@ class CatViewModel {
         switch currCatType {
         case .favorite:
             // find favorite cats and remove duplicates with Set
-            let myFavoriteCats = Array(Set(cats.flatMap({ $0 }).filter({ cache.isFavorite[$0.id] ?? false } )))
+            let myFavoriteCats = Array(Set(cats.flatMap({ $0 }).filter({ isMyFavorite(id: $0.id) } )))
             return myFavoriteCats
             
         default:
@@ -77,6 +79,26 @@ class CatViewModel {
 
 
 
+extension CatViewModel: CatViewModelDelegate {
+
+    func toggleFavorite(id: String) {
+        if cache.isMyFavorite(id: id) {
+            cache.setNotMyFavorite(id: id)
+        }else {
+            cache.setMyFavorite(id: id)
+        }
+    }
+    func isMyFavorite(id: String) -> Bool {
+        return cache.isMyFavorite(id: id)
+    }
+    
+    func getCatImage(id: String) -> UIImage? {
+        return cache.getImage(id: id)
+    }
+    func setCatImage(id: String, image: UIImage) {
+        cache.setImage(id: id, image: image)
+    }
+}
 
 
 

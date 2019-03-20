@@ -20,21 +20,22 @@ class CatTableViewCell: UITableViewCell {
     fileprivate var sectionIndex: Int!
     fileprivate var index: Int!
     fileprivate var item: Cat!
+    fileprivate var delegate: CatViewModelDelegate?
     fileprivate var cache: Cache!
     
-    func configure(item: Cat, sectionIndex: Int, index: Int, cache: Cache) {
+    func configure(item: Cat, sectionIndex: Int, index: Int, delegate: CatViewModelDelegate) {
         self.item = item
         self.sectionIndex = sectionIndex
         self.index = index
-        self.cache = cache
+        self.delegate = delegate
+//        self.cache = cache
         
         //update favorite/NotFavorite image
-        let isFavorite = cache.isFavorite[item.id] ?? false
-        favoriteImageView.image = isFavorite ? myFavoriteImage : notMyFavoriteImage
+        favoriteImageView.image = getFavoriteImage(id: item.id)
         addTapGestureRecognizer(view: favoriteContainerView)
         
         //Update cat image
-        if let catImage = cache.images[item.id] {
+        if let catImage = delegate.getCatImage(id: item.id) {
             catImageView.image = catImage
         }else {
             DispatchQueue.global().async {
@@ -44,8 +45,8 @@ class CatTableViewCell: UITableViewCell {
                     else { return }
                 
                 DispatchQueue.main.async {
+                    self.delegate?.setCatImage(id: item.id, image: catImage)
                     self.catImageView.image = catImage
-                    Cache.shared.images[item.id] = catImage
                 }
             }
         }
@@ -53,17 +54,16 @@ class CatTableViewCell: UITableViewCell {
     }
     
     @IBAction func tabFavorite(_ sender: UITapGestureRecognizer) {
-        toggleFavorite(id: item.id)
+        delegate?.toggleFavorite(id: item.id)
+        favoriteImageView.image = getFavoriteImage(id: item.id)
     }
     
-    func toggleFavorite(id: String) {
-        let isFavorite = Cache.shared.isFavorite[id] ?? false
-        let image = isFavorite ? notMyFavoriteImage : myFavoriteImage
-        favoriteImageView.image = image
-        
-        cache.isFavorite[id] = !isFavorite
+    func getFavoriteImage(id: String) -> UIImage? {
+        let isMyFavorite = delegate?.isMyFavorite(id: id) ?? false
+        return isMyFavorite ? myFavoriteImage : notMyFavoriteImage
     }
     
+
     func addTapGestureRecognizer(view: UIView) {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tabFavorite(_:)))
         view.addGestureRecognizer(tapGestureRecognizer)
