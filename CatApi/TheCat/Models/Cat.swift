@@ -12,8 +12,8 @@ import UIKit
 struct Cat: Codable, Equatable, Hashable {
     var id: String
     var url: String
-    var isMyFavorite = false
-    var image: UIImage?
+//    var isMyFavorite = false
+//    var image: UIImage?
     
     enum CodingKeys: String, CodingKey {
         case id

@@ -63,7 +63,7 @@ class CatApiService: NSObject {
         
         
     deinit {
-        print("CatApiService func deinit() debug")
+        print("CatApiService deinit")
     }
     
 }
@@ -74,12 +74,12 @@ extension CatApiService {
     
         public func loadTestMockData(catType: CatType) -> Single<[Cat]> {
             return Single<[Cat]>.create { single in
-                let cat = Cat(id: "1", url: "https://cdn2.thecatapi.com/images/4ni.jpg", isMyFavorite: false, image: nil)
-                let cat2 = Cat(id: "2", url: "https://cdn2.thecatapi.com/images/4ni.png", isMyFavorite: false, image: nil)
-                let cat22 = Cat(id: "22", url: "https://cdn2.thecatapi.com/images/4ni.png", isMyFavorite: false, image: nil)
-                let cat3 = Cat(id: "3", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false, image: nil)
-                let cat33 = Cat(id: "33", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false, image: nil)
-                let cat333 = Cat(id: "333", url: "https://cdn2.thecatapi.com/images/4ni.gif", isMyFavorite: false, image: nil)
+                let cat = Cat(id: "1", url: "https://cdn2.thecatapi.com/images/4ni.jpg")
+                let cat2 = Cat(id: "2", url: "https://cdn2.thecatapi.com/images/4ni.png")
+                let cat22 = Cat(id: "22", url: "https://cdn2.thecatapi.com/images/4ni.png")
+                let cat3 = Cat(id: "3", url: "https://cdn2.thecatapi.com/images/4ni.gif")
+                let cat33 = Cat(id: "33", url: "https://cdn2.thecatapi.com/images/4ni.gif")
+                let cat333 = Cat(id: "333", url: "https://cdn2.thecatapi.com/images/4ni.gif")
     
                 var cats: [Cat] = []
                 switch catType {

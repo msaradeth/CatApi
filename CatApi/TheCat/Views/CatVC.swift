@@ -44,7 +44,7 @@ class CatVC: UIViewController {
         viewModel.subject.asObservable()
             .bind(to: tableView.rx.items(cellIdentifier: CatTableViewCell.identifier, cellType: CatTableViewCell.self)) { [weak self] (row, item, cell) in
                 guard let this = self else { return }
-                cell.configure(item: item, sectionIndex: this.viewModel.currCatType.getIndex(), index: row, catViewModelDelegate: this.viewModel)
+                cell.configure(item: item, sectionIndex: this.viewModel.currCatType.getIndex(), index: row, cache: this.viewModel.cache)
             }
             .disposed(by: disposeBag)
     }
