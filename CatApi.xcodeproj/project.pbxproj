@@ -21,9 +21,10 @@
 		0EF9699B223E987A00544BA6 /* CatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF96999223E987A00544BA6 /* CatTableViewCell.swift */; };
 		0EF9699C223E987A00544BA6 /* CatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EF9699A223E987A00544BA6 /* CatTableViewCell.xib */; };
 		0EF9699E223EAD9300544BA6 /* TestCatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF9699D223EAD9300544BA6 /* TestCatViewModel.swift */; };
-		0EF969A0223ECB3200544BA6 /* Enum+CatFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF9699F223ECB3200544BA6 /* Enum+CatFilter.swift */; };
+		0EF969A0223ECB3200544BA6 /* Enum+TheCat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF9699F223ECB3200544BA6 /* Enum+TheCat.swift */; };
 		2D9D54B7390E4FCE3854675D /* Pods_CatApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D2739E5630FDA903F4EE89 /* Pods_CatApi.framework */; };
 		59FF7C22A06E1B15E31DA161 /* Pods_CatApi_CatApiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF06F54776C6C9EC3E2FA56 /* Pods_CatApi_CatApiTests.framework */; };
+		5E56588B224296700019BC36 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E56588A224296700019BC36 /* DataSource.swift */; };
 		5E9161262240581E00E71DF3 /* TestUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9161252240581E00E71DF3 /* TestUI.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,8 +66,9 @@
 		0EF96999223E987A00544BA6 /* CatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatTableViewCell.swift; sourceTree = "<group>"; };
 		0EF9699A223E987A00544BA6 /* CatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatTableViewCell.xib; sourceTree = "<group>"; };
 		0EF9699D223EAD9300544BA6 /* TestCatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCatViewModel.swift; sourceTree = "<group>"; };
-		0EF9699F223ECB3200544BA6 /* Enum+CatFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+CatFilter.swift"; sourceTree = "<group>"; };
+		0EF9699F223ECB3200544BA6 /* Enum+TheCat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+TheCat.swift"; sourceTree = "<group>"; };
 		20E30A104410C80E75B79994 /* Pods-CatApi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatApi.release.xcconfig"; path = "Target Support Files/Pods-CatApi/Pods-CatApi.release.xcconfig"; sourceTree = "<group>"; };
+		5E56588A224296700019BC36 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		5E9161252240581E00E71DF3 /* TestUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUI.swift; sourceTree = "<group>"; };
 		7EF06F54776C6C9EC3E2FA56 /* Pods_CatApi_CatApiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CatApi_CatApiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		997E0A5F0B23E2A7B16D705A /* Pods-CatApi-CatApiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatApi-CatApiTests.release.xcconfig"; path = "Target Support Files/Pods-CatApi-CatApiTests/Pods-CatApi-CatApiTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +200,8 @@
 			children = (
 				0E01441B223DD0EC0045217A /* HttpHelper.swift */,
 				0E01441D223DE1D80045217A /* CatApiService.swift */,
+				5E56588A224296700019BC36 /* DataSource.swift */,
+				0E83B8B022420722008133B7 /* Cache.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -214,8 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				0E31CBB0223E025F001242AB /* UIStoryboard+Ext.swift */,
-				0EF9699F223ECB3200544BA6 /* Enum+CatFilter.swift */,
-				0E83B8B022420722008133B7 /* Cache.swift */,
+				0EF9699F223ECB3200544BA6 /* Enum+TheCat.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -495,8 +498,9 @@
 				0EF9699B223E987A00544BA6 /* CatTableViewCell.swift in Sources */,
 				0E31CBAC223DF4D4001242AB /* CatViewModel.swift in Sources */,
 				0E83B8B122420722008133B7 /* Cache.swift in Sources */,
-				0EF969A0223ECB3200544BA6 /* Enum+CatFilter.swift in Sources */,
+				0EF969A0223ECB3200544BA6 /* Enum+TheCat.swift in Sources */,
 				0E01441C223DD0EC0045217A /* HttpHelper.swift in Sources */,
+				5E56588B224296700019BC36 /* DataSource.swift in Sources */,
 				0E31CBAA223DED71001242AB /* CatVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -674,7 +678,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QAJNW7456U;
+				DEVELOPMENT_TEAM = LP46D328FV;
 				INFOPLIST_FILE = CatApi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -694,7 +698,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QAJNW7456U;
+				DEVELOPMENT_TEAM = LP46D328FV;
 				INFOPLIST_FILE = CatApi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -715,7 +719,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QAJNW7456U;
+				DEVELOPMENT_TEAM = LP46D328FV;
 				INFOPLIST_FILE = CatApiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -737,7 +741,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QAJNW7456U;
+				DEVELOPMENT_TEAM = LP46D328FV;
 				INFOPLIST_FILE = CatApiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -758,7 +762,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QAJNW7456U;
+				DEVELOPMENT_TEAM = LP46D328FV;
 				INFOPLIST_FILE = CatApiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -780,7 +784,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QAJNW7456U;
+				DEVELOPMENT_TEAM = LP46D328FV;
 				INFOPLIST_FILE = CatApiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -41,11 +41,14 @@ class CatViewModel {
             return cats[currCatType.getIndex()]
         }
     }
-    var cache: Cache
+    var dataSource: DataSource
+    var cache: Cache {
+        return dataSource.cache
+    }
     
-    init(catType: CatType, cache: Cache) {
+    init(catType: CatType, dataSource: DataSource) {
         currCatType = catType
-        self.cache = cache
+        self.dataSource = dataSource
         subject = BehaviorSubject<[Cat]>(value: [])
         cats = []
         for _ in 0..<5 {
@@ -78,25 +81,22 @@ class CatViewModel {
 
 
 
-
+// MARK: - Helper methods to get/set cat images and favorite cat
 extension CatViewModel: CatViewModelDelegate {
 
     func toggleFavorite(id: String) {
-        if cache.isMyFavorite(id: id) {
-            cache.setNotMyFavorite(id: id)
-        }else {
-            cache.setMyFavorite(id: id)
-        }
+        let toggleMyFavoriteCat = !(cache.isMyFavorite(id: id))
+        cache.setMyFavorite(id: id, isFavorite: toggleMyFavoriteCat)
     }
     func isMyFavorite(id: String) -> Bool {
         return cache.isMyFavorite(id: id)
     }
     
     func getCatImage(id: String) -> UIImage? {
-        return cache.getImage(id: id)
+        return cache.getCatImage(id: id)
     }
     func setCatImage(id: String, image: UIImage) {
-        cache.setImage(id: id, image: image)
+        cache.setCatImage(id: id, image: image)
     }
 }
 
