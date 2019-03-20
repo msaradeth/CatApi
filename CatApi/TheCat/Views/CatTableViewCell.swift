@@ -20,16 +20,16 @@ class CatTableViewCell: UITableViewCell {
     fileprivate var item: Cat!
     fileprivate var delegate: CatViewModelDelegate?
     
-    func configure(item: Cat, delegate: CatViewModelDelegate) {
+    func configure(item: Cat, catViewModelDelegate: CatViewModelDelegate) {
         self.item = item
-        self.delegate = delegate
+        self.delegate = catViewModelDelegate
         
         //update favorite/NotFavorite image
         favoriteImageView.image = getFavoriteImage(id: item.id)
         addTapGestureRecognizer(view: favoriteContainerView)
         
         //Update cat image
-        if let catImage = delegate.getCatImage(id: item.id) {
+        if let catImage = delegate?.getCatImage(id: item.id) {
             catImageView.image = catImage
         }else {
             DispatchQueue.global().async {
