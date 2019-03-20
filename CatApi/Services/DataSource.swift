@@ -15,11 +15,11 @@ class DataSource: NSObject {
     
     
     // MARK: set and get favorite cats
-    func isMyFavorite(id: String) -> Bool {
+    public func isMyFavorite(id: String) -> Bool {
 //        return (isFavorite[id] ?? false)
         return true
     }
-    func setMyFavorite(id: String, isFavorite: Bool) {
+    public func setMyFavorite(id: String, isFavorite: Bool) {
 //        self.isFavorite[id] = isFavorite
     }
      

@@ -24,19 +24,19 @@ class Cache: NSObject {
 
     
     // MARK: set and get favorite cats
-    func isMyFavorite(id: String) -> Bool {
+    public func isMyFavorite(id: String) -> Bool {
         return (isFavorite[id] ?? false)
     }
-    func setMyFavorite(id: String, isFavorite: Bool) {
+    public func setMyFavorite(id: String, isFavorite: Bool) {
         self.isFavorite[id] = isFavorite
     }
 
     
     // MARK: set and get cat images
-    func getCatImage(id: String) -> UIImage? {
+    public func getCatImage(id: String) -> UIImage? {
         return catImages[id] ?? nil
     }
-    func setCatImage(id: String, image: UIImage) {
+    public func setCatImage(id: String, image: UIImage) {
         catImages[id] = image
     }
 

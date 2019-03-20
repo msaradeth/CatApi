@@ -51,13 +51,13 @@ class CatTableViewCell: UITableViewCell {
         favoriteImageView.image = getFavoriteImage(id: item.id)
     }
     
-    func getFavoriteImage(id: String) -> UIImage? {
+    private func getFavoriteImage(id: String) -> UIImage? {
         guard let isMyFavorite = delegate?.isMyFavorite(id: id) else { return nil }
         return isMyFavorite ? myFavoriteImage : notMyFavoriteImage
     }
     
 
-    func addTapGestureRecognizer(view: UIView) {
+    private func addTapGestureRecognizer(view: UIView) {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tabFavorite(_:)))
         view.addGestureRecognizer(tapGestureRecognizer)
     }

@@ -17,7 +17,7 @@ class CatVC: UIViewController {
     @IBOutlet weak var segmentedCntrl: UISegmentedControl!
     
     fileprivate let disposeBag = DisposeBag()
-    var viewModel: CatViewModel!
+    fileprivate var viewModel: CatViewModel!
     
     // Inject need objects for this view controller
     static func createWith(title: String, viewModel: CatViewModel) -> CatVC {
@@ -38,7 +38,7 @@ class CatVC: UIViewController {
         viewModel.currCatType = catType
     }
     
-    func setupRx() {
+    private func setupRx() {
         tableView.register(UINib(nibName: "CatTableViewCell", bundle: nil), forCellReuseIdentifier: CatTableViewCell.identifier)
         
         viewModel.subject.asObservable()
