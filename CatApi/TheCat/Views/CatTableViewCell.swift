@@ -28,7 +28,6 @@ class CatTableViewCell: UITableViewCell {
         self.sectionIndex = sectionIndex
         self.index = index
         self.delegate = delegate
-//        self.cache = cache
         
         //update favorite/NotFavorite image
         favoriteImageView.image = getFavoriteImage(id: item.id)
@@ -59,7 +58,8 @@ class CatTableViewCell: UITableViewCell {
     }
     
     func getFavoriteImage(id: String) -> UIImage? {
-        let isMyFavorite = delegate?.isMyFavorite(id: id) ?? false
+        guard let delegate = self.delegate else { return nil }        
+        let isMyFavorite = delegate.isMyFavorite(id: id)
         return isMyFavorite ? myFavoriteImage : notMyFavoriteImage
     }
     
