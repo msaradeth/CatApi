@@ -1,11 +1,6 @@
 PODS:
   - Alamofire (4.8.1)
   - Differentiator (3.1.0)
-  - Realm (3.13.1):
-    - Realm/Headers (= 3.13.1)
-  - Realm/Headers (3.13.1)
-  - RealmSwift (3.13.1):
-    - Realm (= 3.13.1)
   - RxAtomic (4.4.2)
   - RxCocoa (4.4.2):
     - RxSwift (>= 4.4.2, ~> 4.4)
@@ -18,7 +13,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
-  - RealmSwift
   - RxCocoa (~> 4.4.0)
   - RxDataSources (~> 3.1.0)
   - RxSwift (~> 4.4.0)
@@ -27,8 +21,6 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Differentiator
-    - Realm
-    - RealmSwift
     - RxAtomic
     - RxCocoa
     - RxDataSources
@@ -37,13 +29,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
-  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
-  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
   RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
   RxCocoa: 477990dc3b4c3ff55fb0ac77e1cc06244e0aaec8
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: 74c29b693c8e42b0f64400e8b06564575742d649
 
-PODFILE CHECKSUM: 34fcbc5897aa5a0edd367797eb3994ae40c4172e
+PODFILE CHECKSUM: e56ced6d9686c58c913433ac4fb0a8c41be87d01
 
 COCOAPODS: 1.6.1

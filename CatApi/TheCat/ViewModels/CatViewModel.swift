@@ -41,14 +41,12 @@ class CatViewModel {
             return cats[currCatType.getIndex()]
         }
     }
-    var dataSource: DataSource
-    var cache: Cache {
-        return dataSource.cache
-    }
+    var cache: Cache
+
     
-    init(catType: CatType, dataSource: DataSource) {
+    init(catType: CatType, cache: Cache) {
         currCatType = catType
-        self.dataSource = dataSource
+        self.cache = cache
         subject = BehaviorSubject<[Cat]>(value: [])
         cats = []
         for _ in 0..<5 {

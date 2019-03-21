@@ -20,20 +20,21 @@ class TestCatViewModel: XCTestCase {
     var cat333 = Cat(id: "333", url: "https://cdn2.thecatapi.com/images/4ni.gif")
     
     var viewModel:CatViewModel!
+    let cache = Cache.shared
 }
 
 
 // MARK: - Test CatType.all
 extension TestCatViewModel {
     func testIsLoadDataAllCat() {
-        viewModel = CatViewModel(catType: .all, cache: Cache.shared)
+        viewModel = CatViewModel(catType: .all, cache: cache)
         let cats = [cat, cat2, cat3]
         viewModel.cats[viewModel.currCatType.getIndex()] = cats
         XCTAssertEqual(cats == viewModel.displayCats, true)
     }
 
     func testIsNOTLoadDataAllCat() {
-        viewModel = CatViewModel(catType: .all, cache: Cache.shared)
+        viewModel = CatViewModel(catType: .all, cache: cache)
         let cats = [cat, cat2, cat3]
         let otherCats = [cat22, cat33]
         viewModel.cats[viewModel.currCatType.getIndex()] = cats
@@ -45,14 +46,14 @@ extension TestCatViewModel {
 // MARK: - Test CatType.jpeg
 extension TestCatViewModel {
     func testIsLoadDataJpegCat() {
-        viewModel = CatViewModel(catType: .jpg, cache: Cache.shared)
+        viewModel = CatViewModel(catType: .jpg, cache: cache)
         let cats = [cat, cat2, cat3]
         viewModel.cats[viewModel.currCatType.getIndex()] = cats
         XCTAssertEqual(cats == viewModel.displayCats, true)
     }
     
     func testIsNOTLoadDataJpegCat() {
-        viewModel = CatViewModel(catType: .jpg, cache: Cache.shared)
+        viewModel = CatViewModel(catType: .jpg, cache: cache)
         let cats = [cat, cat2, cat3]
         let otherCats = [cat22, cat33]
         viewModel.cats[viewModel.currCatType.getIndex()] = cats
@@ -60,72 +61,72 @@ extension TestCatViewModel {
     }
 }
 
-//
-//// MARK: - Test CatType.favorite
-//extension TestCatViewModel {
-//    func testIsLoadDataFavoriteCat() {
-//        viewModel = CatViewModel(catType: .favorite, cache: Cache.shared)
-//        cat.isMyFavorite = true
-//        let cats = [cat, cat2, cat3]
-//        viewModel.cats[CatType.all.getIndex()] = cats
-//        XCTAssertEqual([cat] == viewModel.displayCats, true)
-//    }
-//    
-//    func testIsNOTLoadDataFavoriteCat() {
-//        viewModel = CatViewModel(catType: .favorite, cache: Cache.shared)
-//        cat.isMyFavorite = true
-//        let cats = [cat, cat2, cat3]
-//        let otherCats = [cat22, cat33]
-//        viewModel.cats[CatType.all.getIndex()] = cats
-//        XCTAssertEqual(otherCats == viewModel.displayCats, false)
-//    }
-//}
-//
-//
-//// MARK: - Test toggle Favorite from TypeAll section (tap)
-//extension TestCatViewModel {
-//    func testIsToggleFavoriteTypeAllSection() {
-//        viewModel = CatViewModel(catType: .all, cache: Cache.shared)
-//        let cats = [cat, cat2, cat3]
-//        viewModel.cats[CatType.all.getIndex()] = cats
-//        viewModel.toggleFavorite(index: 0)
-//        let aDisplayCat = viewModel.displayCats[0]
-//        XCTAssertEqual(aDisplayCat.isMyFavorite == true, true)
-//    }
-//    
-//    func testIsNotToggleFavoriteTypeAllSection() {
-//        viewModel = CatViewModel(catType: .all, cache: Cache.shared)
-//        let cats = [cat, cat2, cat3]
-//        viewModel.cats[CatType.all.getIndex()] = cats
-//        viewModel.toggleFavorite(index: 0, cache: Cache.shared)
-//        let aDisplayCat = viewModel.displayCats[0]
-//        XCTAssertEqual(aDisplayCat.isMyFavorite == false, false)
-//    }
-//}
-//
-//
-//
-//// MARK: - Test toggle Favorite from TypeFavorite section (tap)
-//extension TestCatViewModel {
-//    func testIsToggleFavoriteTypeFavoriteSection() {
-//        viewModel = CatViewModel(catType: .favorite)
-//        cat.isMyFavorite = true
-//        cat2.isMyFavorite = true
-//        cat3.isMyFavorite = true
-//        let cats = [cat, cat2, cat3]
-//        viewModel.cats[CatType.all.getIndex()] = cats
-//        viewModel.toggleFavorite(index: 0)
-//        print(cat.id)
-//        print(cat2.id)
-//        print(cat3.id)
-//        
-//        //Show not find the cat ID of the cat because it is toggle to false
-//        for aFavoriteCat in viewModel.displayCats {
-//            print(aFavoriteCat.id, cat.id)
-//            XCTAssertEqual(aFavoriteCat.id == cat.id, false)
-//        }
-//    }
-//}
+
+// MARK: - Test CatType.favorite
+extension TestCatViewModel {
+    func testIsLoadDataFavoriteCat() {
+        viewModel = CatViewModel(catType: .favorite, cache: cache)
+        cache.setMyFavorite(id: cat.id, isFavorite: true)
+        let cats = [cat, cat2, cat3]
+        viewModel.cats[CatType.all.getIndex()] = cats
+        XCTAssertEqual([cat] == viewModel.displayCats, true)
+    }
+    
+    func testIsNOTLoadDataFavoriteCat() {
+        viewModel = CatViewModel(catType: .favorite, cache: cache)
+        cache.setMyFavorite(id: cat.id, isFavorite: true)
+        let cats = [cat, cat2, cat3]
+        let otherCats = [cat22, cat33]
+        viewModel.cats[CatType.all.getIndex()] = cats
+        XCTAssertEqual(otherCats == viewModel.displayCats, false)
+    }
+}
+
+
+// MARK: - Test toggle Favorite from TypeAll section (tap)
+extension TestCatViewModel {
+    func testIsToggleFavoriteTypeAllSection() {
+        viewModel = CatViewModel(catType: .all, cache: cache)
+        let cats = [cat, cat2, cat3]
+        viewModel.cats[CatType.all.getIndex()] = cats
+        viewModel.toggleFavorite(id: cat.id)
+        let aDisplayCat = viewModel.displayCats[0]
+        XCTAssertEqual(cache.isMyFavorite(id: aDisplayCat.id) == true, true)
+    }
+
+    func testIsNotToggleFavoriteTypeAllSection() {
+        viewModel = CatViewModel(catType: .all, cache: cache)
+        let cats = [cat, cat2, cat3]
+        viewModel.cats[CatType.all.getIndex()] = cats
+        cache.setMyFavorite(id: cat.id, isFavorite: false)
+        let aDisplayCat = viewModel.displayCats[0]
+        XCTAssertEqual(cache.isMyFavorite(id: aDisplayCat.id) == false, true)
+    }
+}
+
+
+
+// MARK: - Test toggle Favorite from TypeFavorite section (tap)
+extension TestCatViewModel {
+    func testIsToggleFavoriteTypeFavoriteSection() {
+        viewModel = CatViewModel(catType: .favorite, cache: cache)
+        cache.setMyFavorite(id: cat.id, isFavorite: true)
+        cache.setMyFavorite(id: cat2.id, isFavorite: true)
+        cache.setMyFavorite(id: cat3.id, isFavorite: true)
+        let cats = [cat, cat2, cat3]
+        viewModel.cats[CatType.all.getIndex()] = cats
+        viewModel.toggleFavorite(id: cat.id)
+        print(cat.id, cache.isMyFavorite(id: cat.id))
+        print(cat2.id, cache.isMyFavorite(id: cat3.id))
+        print(cat3.id, cache.isMyFavorite(id: cat3.id))
+
+        //Show not find the cat ID of the cat because it is toggle to false
+        for aFavoriteCat in viewModel.displayCats {
+            print(aFavoriteCat.id, cat.id)
+            XCTAssertEqual(aFavoriteCat.id == cat.id, false)
+        }
+    }
+}
 
 
 // And test the rest of the fuctions
