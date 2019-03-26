@@ -26,7 +26,7 @@ class CatViewModel {
             if cats[currCatType.getIndex()].count > 0 {
                 subject.onNext(displayCats)
             }else {
-                loadData()
+                loadData(catType: currCatType)
             }
         }
     }
@@ -56,24 +56,24 @@ class CatViewModel {
     }
     
     
-    func loadData() {
-        guard displayCats.count == 0, currCatType != .favorite, !isLoading[currCatType.getIndex()] else {
+    func loadData(catType: CatType = CatType.all) {
+        guard displayCats.count == 0, catType != .favorite, !isLoading[catType.getIndex()] else {
             subject.onNext(displayCats)
             return
         }
         let catApi = CatApiService.newInstance()
-        isLoading[currCatType.getIndex()] = true
-        catApi.loadData(catType: currCatType)
+        isLoading[catType.getIndex()] = true
+        catApi.loadData(catType: catType)
             .subscribe { [weak self] event in
                 guard let this = self else { return }
                 switch event {
                 case .success(let cats):
-                    this.cats[this.currCatType.getIndex()] = cats
+                    this.cats[catType.getIndex()] = cats
                     this.subject.onNext(this.displayCats)
-                    this.isLoading[this.currCatType.getIndex()] = false
+                    this.isLoading[catType.getIndex()] = false
                 case .error(let error):
                     print("Error: ", error)
-                    this.isLoading[this.currCatType.getIndex()] = false
+                    this.isLoading[catType.getIndex()] = false
                 }
             }
             .disposed(by: disposeBag)
