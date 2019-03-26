@@ -42,6 +42,7 @@ class CatViewModel {
         }
     }
     var cache: Cache
+    var isLoading: [Bool] = [false, false, false, false]
 
     
     init(catType: CatType, cache: Cache) {
@@ -56,11 +57,12 @@ class CatViewModel {
     
     
     func loadData() {
-        guard displayCats.count == 0, currCatType != .favorite else {
+        guard displayCats.count == 0, currCatType != .favorite, !isLoading[currCatType.getIndex()] else {
             subject.onNext(displayCats)
             return
         }
         let catApi = CatApiService.newInstance()
+        isLoading[currCatType.getIndex()] = true
         catApi.loadData(catType: currCatType)
             .subscribe { [weak self] event in
                 guard let this = self else { return }
@@ -68,8 +70,10 @@ class CatViewModel {
                 case .success(let cats):
                     this.cats[this.currCatType.getIndex()] = cats
                     this.subject.onNext(this.displayCats)
+                    this.isLoading[this.currCatType.getIndex()] = false
                 case .error(let error):
                     print("Error: ", error)
+                    this.isLoading[this.currCatType.getIndex()] = false
                 }
             }
             .disposed(by: disposeBag)
