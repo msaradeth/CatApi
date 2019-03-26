@@ -41,18 +41,13 @@ class CatViewModel {
             return cats[currCatType.getIndex()]
         }
     }
-    var cache: Cache
-    var isLoading: [Bool] = [false, false, false, false]
+    var isLoading: [Bool] = Array(repeating: false, count: 4)
 
     
-    init(catType: CatType, cache: Cache) {
+    init(catType: CatType) {
         currCatType = catType
-        self.cache = cache
         subject = BehaviorSubject<[Cat]>(value: [])
-        cats = []
-        for _ in 0..<5 {
-            cats.append([Cat]())    //Init with empty arrays
-        }
+        cats = Array(repeating: [Cat](), count: 5)
     }
     
     
@@ -87,18 +82,17 @@ class CatViewModel {
 extension CatViewModel: CatViewModelDelegate {
 
     func toggleFavorite(id: String) {
-        let toggleMyFavoriteCat = !(cache.isMyFavorite(id: id))
-        cache.setMyFavorite(id: id, isFavorite: toggleMyFavoriteCat)
+        Cache.isFavorite[id] = !isMyFavorite(id: id)
     }
     func isMyFavorite(id: String) -> Bool {
-        return cache.isMyFavorite(id: id)
+        return Cache.isFavorite[id] ?? false
     }
     
     func getCatImage(id: String) -> UIImage? {
-        return cache.getCatImage(id: id)
+        return Cache.catImages[id]
     }
     func setCatImage(id: String, image: UIImage) {
-        cache.setCatImage(id: id, image: image)
+        Cache.catImages[id] = image
     }
 }
 

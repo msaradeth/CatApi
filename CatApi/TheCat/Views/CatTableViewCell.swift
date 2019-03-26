@@ -39,8 +39,8 @@ class CatTableViewCell: UITableViewCell {
                     else { return }
                 
                 DispatchQueue.main.async {
-                    self.delegate?.setCatImage(id: item.id, image: catImage)
                     self.catImageView.image = catImage
+                    self.delegate?.setCatImage(id: item.id, image: catImage)                    
                 }
             }
         }        
@@ -52,8 +52,8 @@ class CatTableViewCell: UITableViewCell {
     }
     
     private func getFavoriteImage(id: String) -> UIImage? {
-        guard let isMyFavorite = delegate?.isMyFavorite(id: id) else { return nil }
-        return isMyFavorite ? myFavoriteImage : notMyFavoriteImage
+        guard let delegate = delegate else { return nil }
+        return delegate.isMyFavorite(id: id) ? myFavoriteImage : notMyFavoriteImage
     }
     
 
